@@ -23,38 +23,6 @@ async function handleRequest(request) {
       return Response.redirect(`${url.origin}/?q=${encodeURIComponent(q)}`, 303);
     }
 
-    // Beautiful minimal Google-like homepage
-    const html = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Said2's Private Search Proxy</title>
-  <style>
-    body { margin:0; height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; font-family:system-ui, sans-serif; background:#f8f9fa; }
-    h1 { font-size:4rem; margin-bottom:1.5rem; color:#202124; font-weight:normal; }
-    form { width:100%; max-width:600px; }
-    .search-box { display:flex; padding:12px 20px; background:white; border:1px solid #dfe1e5; border-radius:24px; box-shadow:0 1px 6px rgba(32,33,36,0.28); }
-    input[type="text"] { flex:1; border:none; outline:none; font-size:1.1rem; }
-    input[type="password"] { width:180px; margin-left:12px; padding:12px; border:1px solid #dfe1e5; border-radius:24px; font-size:1rem; }
-    button { margin-left:12px; padding:0 24px; background:#1a73e8; color:white; border:none; border-radius:24px; font-size:1rem; cursor:pointer; }
-    button:hover { background:#1765cc; }
-    .note { margin-top:2rem; color:#5f6368; font-size:0.9rem; }
-  </style>
-</head>
-<body>
-  <h1>Said2 Search</h1>
-  <form method="POST">
-    <div class="search-box">
-      <input type="text" name="q" placeholder="Search with %s (e.g. cats)" autofocus required>
-      <input type="password" name="secret" placeholder="Secret key" required>
-      <button type="submit">Search</button>
-    </div>
-  </form>
-  <p class="note">Powered by your private proxy • Only you + friends know the key</p>
-</body>
-</html>`;
 
     return new Response(html, {
       headers: { 'Content-Type': 'text/html;charset=UTF-8' }
